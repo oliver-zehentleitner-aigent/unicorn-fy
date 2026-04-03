@@ -5,5 +5,5 @@
 # https://github.com/conda-forge/unicorn-fy-feedstock/blob/main/recipe/meta.yaml
 
 Cython
-ujson
+orjson
 requests

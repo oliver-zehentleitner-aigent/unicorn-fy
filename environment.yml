@@ -4,4 +4,4 @@ dependencies:
 - pip:
   - Cython
   - requests
-  - ujson
+  - orjson

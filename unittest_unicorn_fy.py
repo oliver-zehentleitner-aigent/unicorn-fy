@@ -102,6 +102,11 @@ class TestBinanceGeneric(unittest.TestCase):
         asserted_result = "{'result': None, 'id': 2, 'unicorn_fied': ['binance.com', '" + self.unicorn_fy_version + "']}"
         self.assertEqual(str(self.unicorn_fy.binance_com_websocket(data)), asserted_result)
 
+    def test_result_not_none(self):
+        data = '{"result":"pong","id":3}'
+        result = self.unicorn_fy.binance_com_websocket(data)
+        self.assertEqual(result['unicorn_fied'], ['binance.com', self.unicorn_fy_version])
+
     def test_error(self):
         data = '{"error":"blahblah"}'
         asserted_result = "{'error': 'blahblah', 'unicorn_fied': ['binance.com', '" + self.unicorn_fy_version + "']}"

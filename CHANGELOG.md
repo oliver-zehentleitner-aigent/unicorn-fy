@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 0.16.1.dev (development stage/unreleased/unstable)
 
+## 0.16.2
+### Changed
+- Switched JSON library from `ujson` to `orjson` (suite-wide standard)
+### Fixed
+- `binance_websocket()`: `unicorn_fied` contained a method reference instead of the version string when `result` was not `None` (missing parentheses on `UnicornFy.get_version`)
+
 ## 0.16.1
 ### Added
 - build_wheels.yml:  
