@@ -43,7 +43,7 @@ import logging
 import platform
 import requests
 import time
-import ujson as json
+import orjson as json
 
 __app_name__: str = "unicorn-fy"
 __version__: str = "0.16.1.dev"
@@ -279,7 +279,7 @@ class UnicornFy(object):
                 logger.debug(f"UnicornFy->binance_websocket({str(stream_data)}, {str(exchange)}")
                 return stream_data
             else:
-                unicorn_fied_version = [exchange, UnicornFy.get_version]
+                unicorn_fied_version = [exchange, UnicornFy.get_version()]
                 stream_data['unicorn_fied'] = unicorn_fied_version
                 logger.debug(f"UnicornFy->binance_websocket({str(stream_data)}, {str(exchange)}")
                 return stream_data

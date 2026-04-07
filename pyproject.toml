@@ -23,7 +23,7 @@ repository = "https://github.com/oliver-zehentleitner/unicorn-fy"
 python = ">=3.8.0"
 Cython = "*"
 requests = "*"
-simplejson = "*"
+orjson = "*"
 
 [tool.poetry.dev-dependencies]
 

@@ -82,7 +82,7 @@ setup(
      long_description=long_description,
      long_description_content_type="text/markdown",
      license='MIT',
-     install_requires=['ujson', 'requests', 'Cython'],
+     install_requires=['orjson', 'requests', 'Cython'],
      keywords='binance, api, exchange, unicornfy, binance-dex, binance-chain, rest-api, websockets',
      project_urls={
          'Documentation': 'https://oliver-zehentleitner.github.io/unicorn-fy',
