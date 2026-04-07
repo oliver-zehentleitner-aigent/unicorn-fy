@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - `binance_websocket()`: `unicorn_fied` contained a method reference instead of the version string when `result` was not `None` (missing parentheses on `UnicornFy.get_version`)
 ### Removed
 - Python 3.8 support (EOL Oct 2024); minimum is now 3.9
+- Live integration tests (`TestLiveBinanceCom`, `TestLiveBinanceComFutures`) and UBWA/UBRA dependency from CI
 
 ## 0.16.1
 ### Added
