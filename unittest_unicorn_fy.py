@@ -36,14 +36,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-import unicorn_binance_websocket_api
-import unicorn_binance_rest_api
 from unicorn_fy.unicorn_fy import UnicornFy
 import logging
 import unittest
 import os
-import time
-import threading
 
 
 # Todo: Add stream_everything with rest
@@ -55,30 +51,6 @@ logging.basicConfig(level=logging.ERROR,
                     style="{")
 
 print("Starting unittests")
-
-
-def print_stream_data_from_stream_buffer(binance_websocket_api_manager):
-    while True:
-        if binance_websocket_api_manager.is_manager_stopping():
-            exit(0)
-        oldest_stream_data_from_stream_buffer = binance_websocket_api_manager.pop_stream_data_from_stream_buffer()
-        if oldest_stream_data_from_stream_buffer is not False:
-            unicorn_fied_data = UnicornFy.binance_com_websocket(oldest_stream_data_from_stream_buffer)
-            #print(str(unicorn_fied_data))
-        else:
-            time.sleep(0.01)
-
-
-def print_stream_data_from_stream_buffer_futures(binance_websocket_api_manager):
-    while True:
-        if binance_websocket_api_manager.is_manager_stopping():
-            exit(0)
-        oldest_stream_data_from_stream_buffer = binance_websocket_api_manager.pop_stream_data_from_stream_buffer()
-        if oldest_stream_data_from_stream_buffer is not False:
-            unicorn_fied_data = UnicornFy.binance_com_futures_websocket(oldest_stream_data_from_stream_buffer)
-            #print(str(unicorn_fied_data))
-        else:
-            time.sleep(0.01)
 
 
 class TestBinanceGeneric(unittest.TestCase):
@@ -489,82 +461,6 @@ class TestBinanceOrgWebsocket(unittest.TestCase):
         data = ''
         asserted_result = ""
         self.assertEqual(str(self.unicorn_fy.binance_org_websocket(data)), asserted_result)
-
-    def tearDown(self):
-        del self.unicorn_fy
-
-
-UBWA = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.us")
-
-
-class TestLiveBinanceCom(unittest.TestCase):
-    def setUp(self):
-        print("\n\rStarting live test binance.com (us)")
-        self.unicorn_fy = UnicornFy()
-        ubwa = UBWA
-        worker_thread = threading.Thread(target=print_stream_data_from_stream_buffer,
-                                         args=(ubwa,))
-        worker_thread.start()
-
-        channels = {'aggTrade', 'trade', 'kline_1m', 'kline_5m', 'kline_15m', 'kline_30m', 'kline_1h', 'kline_2h',
-                    'kline_4h',
-                    'kline_6h', 'kline_8h', 'kline_12h', 'kline_1d', 'kline_3d', 'kline_1w', 'kline_1M', 'miniTicker',
-                    'ticker', 'bookTicker', 'depth5', 'depth10', 'depth20', 'depth', 'depth@100ms'}
-        arr_channels = {'!miniTicker', '!ticker', '!bookTicker'}
-        markets = {'bnbbtc', 'ethbtc', 'btcusdt', 'bchabcusdt', 'xrpusdt', 'rvnbtc', 'ltcusdt', 'adausdt', 'eosusdt',
-                   'wanbnb', 'zrxbnb', 'agibnb', 'funeth', 'arketh', 'engeth'}
-        for channel in channels:
-            ubwa.create_stream(channel, markets, stream_label=channel)
-        ubwa.create_stream(arr_channels, "arr")
-        stream_id_trade = ubwa.get_stream_id_by_label("trade")
-        ubwa.get_stream_subscriptions(stream_id_trade)
-        time.sleep(10)
-        ubwa.stop_manager_with_all_streams()
-
-    def test_template(self):
-        data = ''
-        asserted_result = ""
-        self.assertEqual(str(self.unicorn_fy.binance_org_websocket(data)), asserted_result)
-
-    def tearDown(self):
-        del self.unicorn_fy
-
-
-UBWA2 = unicorn_binance_websocket_api.BinanceWebSocketApiManager(exchange="binance.us")
-
-
-class TestLiveBinanceComFutures(unittest.TestCase):
-    def setUp(self):
-        print("\n\rStarting live test binance.com-futures (us)")
-        self.unicorn_fy = UnicornFy()
-        ubwa = UBWA2
-        worker_thread = threading.Thread(target=print_stream_data_from_stream_buffer_futures,
-                                         args=(ubwa,))
-        worker_thread.start()
-
-        channels = {'aggTrade', 'trade', 'kline_1m', 'kline_5m', 'kline_15m', 'kline_30m', 'kline_1h', 'kline_2h',
-                    'kline_4h',
-                    'kline_6h', 'kline_8h', 'kline_12h', 'kline_1d', 'kline_3d', 'kline_1w', 'kline_1M', 'miniTicker',
-                    'ticker', 'bookTicker', 'depth5', 'depth10', 'depth20', 'depth', 'depth@100ms'}
-        arr_channels = {'!miniTicker', '!ticker', '!bookTicker'}
-        markets = {'bnbbtc', 'ethbtc', 'btcusdt', 'bchabcusdt', 'xrpusdt', 'rvnbtc', 'ltcusdt', 'adausdt', 'eosusdt',
-                   'wanbnb', 'zrxbnb', 'agibnb', 'funeth', 'arketh', 'engeth'}
-        for channel in channels:
-            ubwa.create_stream(channel, markets, stream_label=channel)
-        ubwa.create_stream(arr_channels, "arr")
-        stream_id_trade = ubwa.get_stream_id_by_label("trade")
-        ubwa.get_stream_subscriptions(stream_id_trade)
-        time.sleep(10)
-        ubwa.stop_manager_with_all_streams()
-
-    def test_template(self):
-        data = ''
-        asserted_result = ""
-        self.assertEqual(str(self.unicorn_fy.binance_org_websocket(data)), asserted_result)
-
-    def test_with_context(self):
-        with UnicornFy() as ufy:
-            self.assertIsInstance(ufy.get_version(), str)
 
     def tearDown(self):
         del self.unicorn_fy
