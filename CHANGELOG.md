@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 0.16.1.dev (development stage/unreleased/unstable)
 
+## 0.16.3
+### Removed
+- `binance_org_websocket()`: Binance DEX (binance.org) has been discontinued
+
 ## 0.16.2
 ### Added
 - Python 3.14 support

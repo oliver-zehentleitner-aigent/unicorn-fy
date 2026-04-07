@@ -86,19 +86,6 @@ class UnicornFy(object):
             logger.critical(f"An exception occurred: {exc_type} - {exc_value} - {error_traceback}")
 
     @staticmethod
-    def binance_org_websocket(stream_data_json):
-        """
-        unicorn_fy binance.org (incl testnet) raw_stream_data
-
-        :param stream_data_json: The received raw stream data from the Binance websocket
-        :type stream_data_json: json
-
-        :return: dict
-        """
-        logger.info("Can not convert raw data from binance.org")
-        return stream_data_json
-
-    @staticmethod
     def binance_com_websocket(stream_data_json):
         """
         unicorn_fy binance.com raw_stream_data
