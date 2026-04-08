@@ -10,8 +10,8 @@ Open development tasks and decisions are tracked in **[TASKS.md](TASKS.md)**.
 
 Python SDK (MIT License) to convert raw WebSocket stream data from Binance exchange endpoints into well-formed Python dictionaries ("unicorn-fied" data).
 
-**Current Version:** 0.16.2 
-**Python Compatibility:** 3.8 – 3.13  
+**Current Version:** 0.16.2
+**Python Compatibility:** 3.9 – 3.14  
 **Author:** Oliver Zehentleitner  
 **PyPI:** `unicorn-fy`  
 **Part of:** [UNICORN Binance Suite](https://github.com/oliver-zehentleitner/unicorn-binance-suite)
@@ -45,7 +45,7 @@ dev/sphinx/                # Sphinx source for rebuilding docs
 | `binance_com_coin_futures_websocket()` | Binance.com Coin-M Futures |
 | `binance_us_websocket()` | Binance.US |
 | `trbinance_com_websocket()` | trBinance.com |
-| `binance_org_websocket()` | Binance.org (DEX, pass-through only) |
+| ~~`binance_org_websocket()`~~ | ~~Binance.org (DEX, discontinued)~~ |
 
 ---
 
@@ -53,7 +53,7 @@ dev/sphinx/                # Sphinx source for rebuilding docs
 
 Managed in `requirements.txt`, `setup.py`, and `pyproject.toml` — **all three must be kept in sync manually**:
 
-- `ujson` — fast JSON parsing (primary JSON lib in source)
+- `orjson` — fast JSON serialization (suite-wide standard)
 - `requests` — HTTP for version checks
 - `Cython` — C extension compilation (release builds only)
 
@@ -91,7 +91,7 @@ python setup.py bdist_wheel
 3. `unicorn_fy/unicorn_fy.py` (`__version__`)
 
 **CI/CD:** GitHub Actions in `.github/workflows/`
-- `unit-tests.yml` — Python 3.8–3.13 on Ubuntu, Codecov upload
+- `unit-tests.yml` — Python 3.9–3.14 on Ubuntu, Codecov upload
 - `build_wheels.yml` — Manual trigger, builds wheels for Linux/macOS/Windows, PyPI release
 - `codeql-analysis.yml` — Security scanning
 - `build_conda.yml` — Conda package build
@@ -103,7 +103,7 @@ python setup.py bdist_wheel
 - **File header:** Always include the full MIT license block with author/copyright (2019-2025)
 - **Encoding:** UTF-8, UNIX line endings
 - **Logging:** `logging.getLogger("unicorn_fy")`
-- **JSON:** `ujson` is used as `import ujson as json` — do not switch to stdlib `json`
+- **JSON:** `orjson` imported as `import orjson as json` — suite-wide standard, do not switch to `ujson` or stdlib `json`
 - **Cython:** Core module compiles to C extension for releases — no `#cython:` directives needed in source
 - **Versioning:** Keep version in sync across `setup.py`, `pyproject.toml`, and `unicorn_fy/unicorn_fy.py` manually
 
@@ -128,7 +128,7 @@ ufy = unicorn_fy.UnicornFy()
 result = ufy.binance_com_websocket(raw_json_string)
 
 # Result contains normalized keys + 'unicorn_fied' metadata field
-# {'stream_type': '...', 'event_type': '...', ..., 'unicorn_fied': ['binance', '0.16.1']}
+# {'stream_type': '...', 'event_type': '...', ..., 'unicorn_fied': ['binance', '0.16.2']}
 ```
 
 ---
