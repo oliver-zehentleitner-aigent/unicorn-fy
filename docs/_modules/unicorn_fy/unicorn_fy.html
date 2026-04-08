@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>unicorn_fy.unicorn_fy &#8212; unicorn-fy 0.16.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unicorn_fy.unicorn_fy &#8212; unicorn-fy 0.16.2 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=92fd9be5" />
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=fdf8e9ae" />
@@ -175,10 +175,10 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ujson</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">orjson</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="n">__app_name__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;unicorn-fy&quot;</span>
-<span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;0.16.1&quot;</span>
+<span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;0.16.2&quot;</span>
 <span class="n">__logger__</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;unicorn_fy&quot;</span><span class="p">)</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">__logger__</span>
 
@@ -218,22 +218,6 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Leaving with-context of UnicornFy() ...&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">exc_type</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An exception occurred: </span><span class="si">{</span><span class="n">exc_type</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">exc_value</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">error_traceback</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<div class="viewcode-block" id="UnicornFy.binance_org_websocket">
-<a class="viewcode-back" href="../../unicorn_fy.html#unicorn_fy.unicorn_fy.UnicornFy.binance_org_websocket">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">binance_org_websocket</span><span class="p">(</span><span class="n">stream_data_json</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        unicorn_fy binance.org (incl testnet) raw_stream_data</span>
-
-<span class="sd">        :param stream_data_json: The received raw stream data from the Binance websocket</span>
-<span class="sd">        :type stream_data_json: json</span>
-
-<span class="sd">        :return: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Can not convert raw data from binance.org&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">stream_data_json</span></div>
-
 
 <div class="viewcode-block" id="UnicornFy.binance_com_websocket">
 <a class="viewcode-back" href="../../unicorn_fy.html#unicorn_fy.unicorn_fy.UnicornFy.binance_com_websocket">[docs]</a>
@@ -365,7 +349,7 @@
 
 <span class="sd">        :return: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">unicorn_fied_data</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">unicorn_fied_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;UnicornFy-&gt;binance_websocket(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stream_data_json</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">show_deprecated_warning</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -398,17 +382,9 @@
             <span class="k">pass</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;outboundAccountInfo&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;e&#39;</span> <span class="ow">in</span> <span class="n">stream_data</span> <span class="ow">and</span> <span class="s1">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stream_data</span><span class="p">:</span>
                 <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-            <span class="k">elif</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;executionReport&#39;</span><span class="p">:</span>
-                <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-            <span class="k">elif</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;outboundAccountPosition&#39;</span><span class="p">:</span>
-                <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-            <span class="k">elif</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;listStatus&#39;</span><span class="p">:</span>
-                <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-            <span class="k">elif</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;balanceUpdate&#39;</span><span class="p">:</span>
-                <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;stream&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;@depth5&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -439,7 +415,7 @@
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;UnicornFy-&gt;binance_websocket(</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">stream_data</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exchange</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">stream_data</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">unicorn_fied_version</span> <span class="o">=</span> <span class="p">[</span><span class="n">exchange</span><span class="p">,</span> <span class="n">UnicornFy</span><span class="o">.</span><span class="n">get_version</span><span class="p">]</span>
+                <span class="n">unicorn_fied_version</span> <span class="o">=</span> <span class="p">[</span><span class="n">exchange</span><span class="p">,</span> <span class="n">UnicornFy</span><span class="o">.</span><span class="n">get_version</span><span class="p">()]</span>
                 <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;unicorn_fied&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unicorn_fied_version</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;UnicornFy-&gt;binance_websocket(</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">stream_data</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exchange</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">stream_data</span>
@@ -743,7 +719,7 @@
 
 <span class="sd">        :return: dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">unicorn_fied_data</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">unicorn_fied_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;UnicornFy-&gt;binance_futures_websocket(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stream_data_json</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">show_deprecated_warning</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -777,15 +753,9 @@
             <span class="k">pass</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bookTicker&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;balanceUpdate&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;forceOrder&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;ORDER_TRADE_UPDATE&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;ACCOUNT_UPDATE&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;ACCOUNT_CONFIG_UPDATE&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;MARGIN_CALL&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="s1">&#39;e&#39;</span> <span class="ow">in</span> <span class="n">stream_data</span> <span class="ow">and</span> <span class="s1">&#39;data&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stream_data</span><span class="p">:</span>
                 <span class="n">stream_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">}</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;stream&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;@depth5&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -1401,6 +1371,21 @@
                                          <span class="s1">&#39;event_time&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;E&#39;</span><span class="p">],</span>
                                          <span class="s1">&#39;multi_assets_mode&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;ai&#39;</span><span class="p">][</span><span class="s1">&#39;j&#39;</span><span class="p">],</span>
                                          <span class="p">}</span>
+            <span class="k">elif</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TRADE_LITE&#39;</span><span class="p">:</span>
+                <span class="n">unicorn_fied_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;TRADE_LITE&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;event_type&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;e&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;event_time&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;E&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;transaction_time&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;T&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;s&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;client_order_id&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;c&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;S&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;order_quantity&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;q&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;order_price&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;p&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;last_executed_quantity&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;l&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;last_executed_price&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;L&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;trade_id&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;t&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;order_id&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;i&#39;</span><span class="p">],</span>
+                                     <span class="s1">&#39;is_trade_maker_side&#39;</span><span class="p">:</span> <span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;m&#39;</span><span class="p">]}</span>
         <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">error_msg</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;UnicornFy-&gt;binance_futures_websocket(</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">unicorn_fied_data</span><span class="p">)</span><span class="si">}</span><span class="s2">) - &quot;</span>
                             <span class="sa">f</span><span class="s2">&quot;error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span><span class="si">}</span><span class="s2"> - Variable: </span><span class="si">{</span><span class="n">stream_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1630,12 +1615,12 @@
     </div>  
     <div class="footer">
     <a href="https://github.com/oliver-zehentleitner/unicorn-binance-suite#documentation">Index of all docs</a><br />
-    &copy; <a href="/license.html">Copyright</a> 2023-2023, LUCIT Systems and Development. All Rights Reserved..
+    &copy; <a href="/license.html">Copyright</a> 2019-2025, Oliver Zehentleitner All Rights Reserved..
     See <a href="/license.html">License</a> for more information.<br />
-    Last updated on Jun 23 2025 at 06:55 (CET).
+    Last updated on Apr 08 2026 at 17:11 (CET).
     <a href="https://github.com/LUCIT-Systems-and-Development/unicorn-fy/issues/new/choose">Found a bug</a>?
     <br />
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
         with <a href="https://github.com/LUCIT-Systems-and-Development/python-docs-theme-lucit">python-docs-theme-lucit</a>.
     </div>
 

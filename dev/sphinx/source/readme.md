@@ -53,7 +53,7 @@ Output:
 {'stream_type': 'btcusdt@trade', 'event_type': 'trade', 'event_time': 1556876873656, 'symbol': 'BTCUSDT',
  'trade_id': 117727701, 'price': '5786.76000000', 'quantity': '0.03200500', 'buyer_order_id': 341831847,
  'seller_order_id': 341831876, 'trade_time': 1556876873648, 'is_market_maker': True, 'ignore': True,
- 'unicorn_fied': ['binance', '0.16.1']}
+ 'unicorn_fied': ['binance', '0.16.2']}
 ```
 
 This lib is integrated into 
@@ -87,8 +87,6 @@ logging.getLogger("unicorn_fy")
 | [Binance Coin Futures Testnet](https://testnet.binancefuture.com) ([API](https://github.com/binance-exchange/binance-official-api-docs)) | [`binance_com_coin_futures_websocket(stream_data_json)`](https://oliver-zehentleitner.github.io/unicorn-fy/unicorn_fy.html?highlight=binance_com#unicorn_fy.unicorn_fy.UnicornFy.binance_com_futures_websocket) | NEEDS_YOUR_HELP |
 | [Binance US](https://www.binance.us) ([API](https://github.com/binance-us/binance-official-api-docs)) | [`binance_us_websocket(stream_data_json)`](https://oliver-zehentleitner.github.io/unicorn-fy/unicorn_fy.html?highlight=binance_com#unicorn_fy.unicorn_fy.UnicornFy.binance_us_websocket) | STABLE |
 | [Binance TR](https://www.trbinance.com) ([API](https://www.trbinance.com/apidocs)) | [`trbinance_com_websocket(stream_data_json)`](https://oliver-zehentleitner.github.io/unicorn-fy/unicorn_fy.html?highlight=binance_com#unicorn_fy.unicorn_fy.UnicornFy.trbinance_com_websocket) | STABLE |
-| [Binance DEX](https://www.binance.org) ([API](https://docs.binance.org/)) | [`binance_org_websocket(stream_data_json)`](https://oliver-zehentleitner.github.io/unicorn-fy/unicorn_fy.html?highlight=binance_com#unicorn_fy.unicorn_fy.UnicornFy.binance_org_websocket) | NEEDS_YOUR_HELP |
-| [Binance DEX Testnet](https://testnet.binance.org) ([API](https://docs.binance.org/)) | [`binance_org_websocket(stream_data_json)`](https://oliver-zehentleitner.github.io/unicorn-fy/unicorn_fy.html?highlight=binance_com#unicorn_fy.unicorn_fy.UnicornFy.binance_org_websocket) | NEEDS_YOUR_HELP |
 
 ***REST***
 
@@ -104,7 +102,7 @@ If you like the project, please
 [GitHub](https://github.com/oliver-zehentleitner/unicorn-fy)! 
 
 ## Installation and Upgrade
-The module requires Python 3.8 and runs smoothly up to and including Python 3.13.
+The module requires Python 3.9 and runs smoothly up to and including Python 3.14.
 
 [There is no conda support until the migration to conda-forge.](https://github.com/oliver-zehentleitner/unicorn-binance-suite/issues/17)
 
@@ -185,9 +183,9 @@ Run in bash:
 `pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/$(curl -s https://api.github.com/repos/oliver-zehentleitner/unicorn-fy/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")').tar.gz --upgrade`
 
 #### Windows
-Use the below command with the version (such as 0.16.1) you determined [here](https://github.com/oliver-zehentleitner/unicorn-fy/releases/latest):
+Use the below command with the version (such as 0.16.2) you determined [here](https://github.com/oliver-zehentleitner/unicorn-fy/releases/latest):
 
-`pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/0.16.1.tar.gz --upgrade`
+`pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/0.16.2.tar.gz --upgrade`
 
 ### From the latest source (dev-stage) with PIP from [GitHub](https://github.com/oliver-zehentleitner/unicorn-fy)
 This is not a release version and can not be considered to be stable!
@@ -225,7 +223,6 @@ or the [current master branch](https://github.com/oliver-zehentleitner/unicorn-f
 - [Discussions](https://github.com/oliver-zehentleitner/unicorn-fy/discussions)
 - [https://t.me/unicorndevs](https://t.me/unicorndevs)
 - [https://dev.binance.vision](https://dev.binance.vision)
-- [https://community.binance.org](https://community.binance.org)
 
 ## Receive Notifications
 To receive notifications on available updates you can 

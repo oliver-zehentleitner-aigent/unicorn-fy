@@ -9,7 +9,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [How to upgrade to the latest version!](https://oliver-zehentleitner.github.io/unicorn-fyreadme.html#installation-and-upgrade)
 
-## 0.16.1.dev (development stage/unreleased/unstable)
+## 0.16.2.dev (development stage/unreleased/unstable)
+
+## 0.16.2
+### Added
+- `binance_futures_websocket()`: support for `TRADE_LITE` user data stream event (fixes #50)
+- Python 3.14 support
+### Changed
+- Switched JSON library from `ujson` to `orjson` (suite-wide standard)
+### Fixed
+- `binance_websocket()` and `binance_futures_websocket()`: initialize `unicorn_fied_data` as `{}` instead of `False` to prevent `TypeError: 'bool' object does not support item assignment` when an unrecognized event type is received (fixes #44)
+- `binance_websocket()` and `binance_futures_websocket()`: replace explicit event-type whitelist with catch-all wrapping for any payload carrying a top-level `'e'` key without a `'data'` wrapper (e.g. `listenKeyExpired`), preventing `KeyError: 'data'` (fixes #41)
+- `binance_websocket()`: `unicorn_fied` contained a method reference instead of the version string when `result` was not `None` (missing parentheses on `UnicornFy.get_version`)
+### Removed
+- Python 3.8 support (EOL Oct 2024); minimum is now 3.9
+- Live integration tests (`TestLiveBinanceCom`, `TestLiveBinanceComFutures`) and UBWA/UBRA dependency from CI
+- `binance_org_websocket()`: Binance DEX (binance.org) has been discontinued
 
 ## 0.16.1
 ### Added
