@@ -192,7 +192,7 @@ class UnicornFy(object):
 
         :return: dict
         """
-        unicorn_fied_data = False
+        unicorn_fied_data = {}
 
         logger.debug("UnicornFy->binance_websocket(" + str(stream_data_json) + ")")
         if show_deprecated_warning is True:
@@ -567,7 +567,7 @@ class UnicornFy(object):
 
         :return: dict
         """
-        unicorn_fied_data = False
+        unicorn_fied_data = {}
 
         logger.debug("UnicornFy->binance_futures_websocket(" + str(stream_data_json) + ")")
         if show_deprecated_warning is True:
