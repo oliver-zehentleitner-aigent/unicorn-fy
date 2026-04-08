@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 0.16.1.dev (development stage/unreleased/unstable)
 
 ## 0.16.4
+### Added
+- `binance_futures_websocket()`: support for `TRADE_LITE` user data stream event (fixes #50)
 ### Fixed
 - `binance_websocket()` and `binance_futures_websocket()`: initialize `unicorn_fied_data` as `{}` instead of `False` to prevent `TypeError: 'bool' object does not support item assignment` when an unrecognized event type is received (fixes #44)
 

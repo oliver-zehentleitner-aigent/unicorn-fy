@@ -452,6 +452,28 @@ class TestBinanceTRWebsocket(unittest.TestCase):
         del self.unicorn_fy
 
 
+class TestBinanceFuturesTradeLite(unittest.TestCase):
+    def setUp(self):
+        self.unicorn_fy = UnicornFy()
+        self.unicorn_fy_version = str(self.unicorn_fy.get_version())
+
+    def test_trade_lite(self):
+        data = ('{"e":"TRADE_LITE","E":1721895408092,"T":1721895408214,"s":"BTCUSDT",'
+                '"q":"0.001","p":"0","m":false,"c":"z8hcUoOsqEdKMeKPSABslD","S":"BUY",'
+                '"L":"64089.20","l":"0.040","t":109100866,"i":8886774}')
+        result = self.unicorn_fy.binance_com_futures_websocket(data)
+        self.assertEqual(result['event_type'], 'TRADE_LITE')
+        self.assertEqual(result['symbol'], 'BTCUSDT')
+        self.assertEqual(result['side'], 'BUY')
+        self.assertEqual(result['order_id'], 8886774)
+        self.assertEqual(result['trade_id'], 109100866)
+        self.assertEqual(result['last_executed_price'], '64089.20')
+        self.assertEqual(result['unicorn_fied'], ['binance.com-futures', self.unicorn_fy_version])
+
+    def tearDown(self):
+        del self.unicorn_fy
+
+
 if __name__ == '__main__':
     unittest.main()
 
