@@ -607,7 +607,8 @@ class UnicornFy(object):
                                     'ORDER_TRADE_UPDATE',
                                     'ACCOUNT_UPDATE',
                                     'ACCOUNT_CONFIG_UPDATE',
-                                    'MARGIN_CALL']:
+                                    'MARGIN_CALL',
+                                    'TRADE_LITE']:
                 stream_data = {'data': stream_data}
         except KeyError:
             pass
@@ -1225,6 +1226,21 @@ class UnicornFy(object):
                                          'event_time': stream_data['data']['E'],
                                          'multi_assets_mode': stream_data['data']['ai']['j'],
                                          }
+            elif stream_data['data']['e'] == 'TRADE_LITE':
+                unicorn_fied_data = {'stream_type': 'TRADE_LITE',
+                                     'event_type': stream_data['data']['e'],
+                                     'event_time': stream_data['data']['E'],
+                                     'transaction_time': stream_data['data']['T'],
+                                     'symbol': stream_data['data']['s'],
+                                     'client_order_id': stream_data['data']['c'],
+                                     'side': stream_data['data']['S'],
+                                     'order_quantity': stream_data['data']['q'],
+                                     'order_price': stream_data['data']['p'],
+                                     'last_executed_quantity': stream_data['data']['l'],
+                                     'last_executed_price': stream_data['data']['L'],
+                                     'trade_id': stream_data['data']['t'],
+                                     'order_id': stream_data['data']['i'],
+                                     'is_trade_maker_side': stream_data['data']['m']}
         except TypeError as error_msg:
             logger.critical(f"UnicornFy->binance_futures_websocket({str(unicorn_fied_data)}) - "
                             f"error: {str(error_msg)} - Variable: {stream_data['data']}")
