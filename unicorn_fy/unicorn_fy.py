@@ -225,17 +225,9 @@ class UnicornFy(object):
             pass
 
         try:
-            if stream_data['e'] == 'outboundAccountInfo':
+            if 'e' in stream_data and 'data' not in stream_data:
                 stream_data = {'data': stream_data}
-            elif stream_data['e'] == 'executionReport':
-                stream_data = {'data': stream_data}
-            elif stream_data['e'] == 'outboundAccountPosition':
-                stream_data = {'data': stream_data}
-            elif stream_data['e'] == 'listStatus':
-                stream_data = {'data': stream_data}
-            elif stream_data['e'] == 'balanceUpdate':
-                stream_data = {'data': stream_data}
-        except KeyError:
+        except TypeError:
             pass
         try:
             if stream_data['stream'].find('@depth5') != -1:
@@ -601,16 +593,9 @@ class UnicornFy(object):
             pass
 
         try:
-            if stream_data['e'] in ['bookTicker',
-                                    'balanceUpdate',
-                                    'forceOrder',
-                                    'ORDER_TRADE_UPDATE',
-                                    'ACCOUNT_UPDATE',
-                                    'ACCOUNT_CONFIG_UPDATE',
-                                    'MARGIN_CALL',
-                                    'TRADE_LITE']:
+            if 'e' in stream_data and 'data' not in stream_data:
                 stream_data = {'data': stream_data}
-        except KeyError:
+        except TypeError:
             pass
         try:
             if stream_data['stream'].find('@depth5') != -1:
