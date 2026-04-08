@@ -60,7 +60,7 @@ def print_stream_data_from_stream_buffer(binance_websocket_api_manager):
         if binance_websocket_api_manager.is_manager_stopping():
             exit(0)
         oldest_stream_data_from_stream_buffer = binance_websocket_api_manager.pop_stream_data_from_stream_buffer()
-        if oldest_stream_data_from_stream_buffer is not False:
+        if oldest_stream_data_from_stream_buffer is not None:
             unicorn_fied_data = UnicornFy.binance_com_websocket(oldest_stream_data_from_stream_buffer)
             print(str(unicorn_fied_data))
         else:
@@ -89,10 +89,10 @@ worker_thread = threading.Thread(target=print_stream_data_from_stream_buffer, ar
 worker_thread.start()
 
 data = ubra.get_all_tickers()
-for item in data:
+for item in data[0:512]:
     markets.append(item['symbol'])
 
-userdata_stream_id = ubwa.create_stream(["!userData"], ["arr"], api_key=binance_api_key, api_secret=binance_api_secret)
+#userdata_stream_id = ubwa.create_stream(["!userData"], ["arr"], api_key=binance_api_key, api_secret=binance_api_secret)
 arr_stream_id = ubwa.create_stream(arr_channels, "arr")
 
 for channel in channels:

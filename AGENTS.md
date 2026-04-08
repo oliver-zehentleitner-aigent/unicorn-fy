@@ -10,7 +10,7 @@ Open development tasks and decisions are tracked in **[TASKS.md](TASKS.md)**.
 
 Python SDK (MIT License) to convert raw WebSocket stream data from Binance exchange endpoints into well-formed Python dictionaries ("unicorn-fied" data).
 
-**Current Version:** 0.16.1.dev  
+**Current Version:** 0.16.2 
 **Python Compatibility:** 3.8 – 3.13  
 **Author:** Oliver Zehentleitner  
 **PyPI:** `unicorn-fy`  
