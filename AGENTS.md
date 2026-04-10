@@ -10,7 +10,7 @@ Open development tasks and decisions are tracked in **[TASKS.md](TASKS.md)**.
 
 Python SDK (MIT License) to convert raw WebSocket stream data from Binance exchange endpoints into well-formed Python dictionaries ("unicorn-fied" data).
 
-**Current Version:** 0.16.2
+**Current Version:** 0.17.0
 **Python Compatibility:** 3.9 – 3.14  
 **Author:** Oliver Zehentleitner  
 **PyPI:** `unicorn-fy`  
@@ -128,7 +128,7 @@ ufy = unicorn_fy.UnicornFy()
 result = ufy.binance_com_websocket(raw_json_string)
 
 # Result contains normalized keys + 'unicorn_fied' metadata field
-# {'stream_type': '...', 'event_type': '...', ..., 'unicorn_fied': ['binance', '0.16.2']}
+# {'stream_type': '...', 'event_type': '...', ..., 'unicorn_fied': ['binance', '0.17.0']}
 ```
 
 ---

@@ -9,7 +9,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [How to upgrade to the latest version!](https://oliver-zehentleitner.github.io/unicorn-fyreadme.html#installation-and-upgrade)
 
-## 0.16.2.dev (development stage/unreleased/unstable)
+## 0.17.0.dev (development stage/unreleased/unstable)
+
+## 0.17.0
 ### Fixed
 - `binance_websocket()`: handle WS API userData event envelope `{"subscriptionId": 0, "event": {...}}`
   introduced by Binance after removing the REST listenKey endpoints for Spot/Margin in February 2026.
