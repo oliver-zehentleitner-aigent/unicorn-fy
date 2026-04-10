@@ -225,6 +225,14 @@ class UnicornFy(object):
             pass
 
         try:
+            if 'event' in stream_data and 'subscriptionId' in stream_data:
+                # WS API userData envelope: {"subscriptionId": 0, "event": {"e": "executionReport", ...}}
+                # Unwrap to standard format so the rest of the normalisation pipeline works unchanged.
+                stream_data = {'data': stream_data['event']}
+        except (KeyError, TypeError):
+            pass
+
+        try:
             if 'e' in stream_data and 'data' not in stream_data:
                 stream_data = {'data': stream_data}
         except TypeError:
