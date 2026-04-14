@@ -9,7 +9,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [How to upgrade to the latest version!](https://oliver-zehentleitner.github.io/unicorn-fyreadme.html#installation-and-upgrade)
 
-## 0.17.0.dev (development stage/unreleased/unstable)
+## 0.17.1.dev (development stage/unreleased/unstable)
+
+## 0.17.1
 ### Fixed
 - `get_latest_version()`: handle `False` return from `get_latest_release_info()` gracefully instead of
   crashing with `AttributeError` when the GitHub API request fails (#69)
