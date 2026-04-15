@@ -77,8 +77,9 @@ setup(
      version="0.17.1",
      author="Oliver Zehentleitner",
      url="https://github.com/oliver-zehentleitner/unicorn-fy",
-     description="A Python SDK to convert received raw data from crypto exchange API endpoints into "
-                 "well-formed python dictionaries.",
+     description="Normalizes raw responses from crypto exchange APIs (Binance & co.) into consistent, "
+                 "cleanly-typed Python dictionaries. A transformation layer that makes exchange data "
+                 "interchangeable instead of exchange-specific.",
      long_description=long_description,
      long_description_content_type="text/markdown",
      license='MIT',
