@@ -21,7 +21,7 @@
 [Examples](#examples) | [Wiki](#wiki) | [Social](#social) | [Notifications](#receive-notifications) | [Bugs](#how-to-report-bugs-or-suggest-improvements) 
 | [Contributing](#contributing) | [Disclaimer](#disclaimer) 
 
-A Python SDK to convert received raw data from crypto exchange API endpoints into well-formed python dictionaries.
+Normalizes raw responses from crypto exchange APIs (Binance & co.) into consistent, cleanly-typed Python dictionaries. A transformation layer that makes exchange data interchangeable instead of exchange-specific.
 
 Part of ['UNICORN Binance Suite'](https://github.com/oliver-zehentleitner/unicorn-binance-suite).
 

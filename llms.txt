@@ -1,0 +1,50 @@
+# UnicornFy
+
+> Normalize raw Binance WebSocket/REST data into well-formed Python dicts.
+> Part of [UNICORN Binance Suite](https://github.com/oliver-zehentleitner/unicorn-binance-suite).
+
+Install: `pip install unicorn-fy`
+Import: `from unicorn_fy import UnicornFy`
+
+## Quick Start
+
+```python
+# use case: normalize raw WebSocket JSON into a clean dict
+from unicorn_fy import UnicornFy
+
+raw_json = '{"e":"trade","E":1234567890,"s":"BTCUSDT","t":123,"p":"50000.00","q":"0.01",...}'
+normalized = UnicornFy.binance_com_websocket(raw_json)
+print(normalized['event_type'])  # "trade"
+print(normalized['symbol'])      # "BTCUSDT"
+```
+
+## Methods (all static)
+
+| Method | Exchange |
+|--------|----------|
+| `UnicornFy.binance_com_websocket(json)` | binance.com |
+| `UnicornFy.binance_com_margin_websocket(json)` | binance.com-margin |
+| `UnicornFy.binance_com_isolated_margin_websocket(json)` | binance.com-isolated_margin |
+| `UnicornFy.binance_com_futures_websocket(json)` | binance.com-futures |
+| `UnicornFy.binance_com_coin_futures_websocket(json)` | binance.com-coin_futures |
+| `UnicornFy.binance_us_websocket(json)` | binance.us |
+| `UnicornFy.trbinance_com_websocket(json)` | trbinance.com |
+
+## Typical Usage
+
+UnicornFy is usually used indirectly via UBWA's `output_default="UnicornFy"` parameter:
+
+```python
+from unicorn_binance_websocket_api import BinanceWebSocketApiManager
+
+ubwa = BinanceWebSocketApiManager(output_default="UnicornFy")
+ubwa.create_stream(channels="trade", markets="btcusdt",
+                   process_stream_data=lambda data: print(data))
+# data is already normalized — no manual UnicornFy call needed
+```
+
+## Common Mistakes
+
+- All methods are static — you do NOT need to create a UnicornFy instance
+- Input must be valid JSON string, not a Python dict
+- Use `UnicornFy.is_json(data)` to check before parsing
