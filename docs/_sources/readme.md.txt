@@ -21,7 +21,7 @@
 [Examples](#examples) | [Wiki](#wiki) | [Social](#social) | [Notifications](#receive-notifications) | [Bugs](#how-to-report-bugs-or-suggest-improvements) 
 | [Contributing](#contributing) | [Disclaimer](#disclaimer) 
 
-A Python SDK to convert received raw data from crypto exchange API endpoints into well-formed python dictionaries.
+Normalizes raw responses from crypto exchange APIs (Binance & co.) into consistent, cleanly-typed Python dictionaries. A transformation layer that makes exchange data interchangeable instead of exchange-specific.
 
 Part of ['UNICORN Binance Suite'](https://github.com/oliver-zehentleitner/unicorn-binance-suite).
 
@@ -266,6 +266,15 @@ contribute follow
 [![Contributors](https://contributors-img.web.app/image?repo=oliver-zehentleitner/unicorn-fy)](https://github.com/oliver-zehentleitner/unicorn-fy/graphs/contributors)
 
 We ![love](https://raw.githubusercontent.com/oliver-zehentleitner/unicorn-fy/master/images/misc/heart.png) open source!
+
+---
+
+## AI Integration
+
+This project provides a [`llms.txt`](https://raw.githubusercontent.com/oliver-zehentleitner/unicorn-fy/refs/heads/master/llms.txt) file for AI tools (ChatGPT, Claude, Copilot, etc.) with structured 
+usage instructions, code examples and module routing.
+
+---
 
 ## Disclaimer
 This project is for informational purposes only. You should not construe this information or any other material as 
