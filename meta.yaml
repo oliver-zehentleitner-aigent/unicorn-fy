@@ -27,10 +27,6 @@ requirements:
     - requests
     - orjson
 
-#channels:
-#  - conda-forge
-#  - default
-
 test:
   imports:
     - unicorn_fy
