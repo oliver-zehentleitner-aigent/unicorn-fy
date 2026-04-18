@@ -65,11 +65,11 @@ Output:
  'trade_time': 1556876873648,
  'is_market_maker': True,
  'ignore': True,
- 'unicorn_fied': ['binance', '0.17.1']}
+ 'unicorn_fied': ['binance', '0.17.2']}
 ```
 
 This lib is integrated into 
-[UNICORN Binance WebSocket API](https://www.lucit.tech/unicorn-binance-websocket-api.html) 
+[UNICORN Binance WebSocket API](https://github.com/oliver-zehentleitner/unicorn-binance-websocket-api) 
 and can be activated by setting parameter 
 [`output_default` of `BinanceWebSocketApiManager()` to `UnicornFy`](https://oliver-zehentleitner.github.io/unicorn-binance-websocket-api/unicorn_binance_websocket_api.html?highlight=output_default#module-unicorn_binance_websocket_api.manager) 
 or for specific streams with the parameter 
@@ -116,7 +116,7 @@ If you like the project, please
 ## Installation and Upgrade
 The module requires Python 3.9 and runs smoothly up to and including Python 3.14.
 
-For the PyPy interpreter we offer packages only from Python version 3.9 and higher.
+PyPy wheels are available for all supported Python versions.
 
 The current dependencies are listed 
 [here](https://github.com/oliver-zehentleitner/unicorn-fy/blob/master/requirements.txt).
@@ -172,9 +172,9 @@ Run in bash:
 `pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/$(curl -s https://api.github.com/repos/oliver-zehentleitner/unicorn-fy/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")').tar.gz --upgrade`
 
 #### Windows
-Use the below command with the version (such as 0.17.1) you determined [here](https://github.com/oliver-zehentleitner/unicorn-fy/releases/latest):
+Use the below command with the version (such as 0.17.2) you determined [here](https://github.com/oliver-zehentleitner/unicorn-fy/releases/latest):
 
-`pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/0.17.1.tar.gz --upgrade`
+`pip install https://github.com/oliver-zehentleitner/unicorn-fy/archive/0.17.2.tar.gz --upgrade`
 
 ### From the latest source (dev-stage) with PIP from [GitHub](https://github.com/oliver-zehentleitner/unicorn-fy)
 This is not a release version and can not be considered to be stable!

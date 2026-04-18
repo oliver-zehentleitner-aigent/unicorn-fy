@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "unicorn-fy"
-version = "0.17.1"
+version = "0.17.2"
 description = "Normalizes raw responses from crypto exchange APIs (Binance & co.) into consistent, cleanly-typed Python dictionaries. A transformation layer that makes exchange data interchangeable instead of exchange-specific."
 authors = ["Oliver Zehentleitner"]
 license = "MIT"

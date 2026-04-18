@@ -74,7 +74,7 @@ with open("README.md", "r") as fh:
 
 setup(
      name=name,
-     version="0.17.1",
+     version="0.17.2",
      author="Oliver Zehentleitner",
      url="https://github.com/oliver-zehentleitner/unicorn-fy",
      description="Normalizes raw responses from crypto exchange APIs (Binance & co.) into consistent, "

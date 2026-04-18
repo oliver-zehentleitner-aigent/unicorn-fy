@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [How to upgrade to the latest version!](https://oliver-zehentleitner.github.io/unicorn-fyreadme.html#installation-and-upgrade)
 
-## 0.17.1.dev (development stage/unreleased/unstable)
+## 0.17.2.dev (development stage/unreleased/unstable)
 ### Changed
 - README: replaced the lucit.tech "UNICORN Binance WebSocket API"
   project link with the canonical GitHub repo URL.

@@ -9,8 +9,23 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [How to upgrade to the latest version!](https://oliver-zehentleitner.github.io/unicorn-fyreadme.html#installation-and-upgrade)
 
-## 0.17.1.dev (development stage/unreleased/unstable)
+## 0.17.2.dev (development stage/unreleased/unstable)
 ### Changed
+- README: replaced the lucit.tech "UNICORN Binance WebSocket API"
+  project link with the canonical GitHub repo URL.
+- `examples/README.md`: removed the lucit.tech chat support link.
+- `.github/ISSUE_TEMPLATE/{bug_report,feature_request}.yml`: updated
+  the Issue-Guidelines and version-check-script URLs from the old
+  `LUCIT-Systems-and-Development` GitHub org to `oliver-zehentleitner`.
+- `SECURITY.md`: replaced the lucit.tech contact form URL with the
+  GitHub Security Advisories private-reporting URL.
+### Changed
+- README: reworded the PyPy paragraph. The old sentence ("For the PyPy
+  interpreter we offer packages only from Python version 3.9 and
+  higher") made sense when we still shipped wheels for pre-3.9 CPython;
+  now that 3.9 is the minimum for everything, it's just noise.
+  Replaced with "PyPy wheels are available for all supported Python
+  versions."
 - README: switched all conda references from the legacy `lucit` channel
   to `conda-forge`. Added conda-forge version / downloads / feedstock
   build badges. Removed the "There is no conda support until migration"
