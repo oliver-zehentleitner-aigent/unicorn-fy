@@ -69,7 +69,7 @@ Output:
 ```
 
 This lib is integrated into 
-[UNICORN Binance WebSocket API](https://www.lucit.tech/unicorn-binance-websocket-api.html) 
+[UNICORN Binance WebSocket API](https://github.com/oliver-zehentleitner/unicorn-binance-websocket-api) 
 and can be activated by setting parameter 
 [`output_default` of `BinanceWebSocketApiManager()` to `UnicornFy`](https://oliver-zehentleitner.github.io/unicorn-binance-websocket-api/unicorn_binance_websocket_api.html?highlight=output_default#module-unicorn_binance_websocket_api.manager) 
 or for specific streams with the parameter 
