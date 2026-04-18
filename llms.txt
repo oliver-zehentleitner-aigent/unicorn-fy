@@ -3,6 +3,8 @@
 > Normalize raw Binance WebSocket/REST data into well-formed Python dicts.
 > Part of [UNICORN Binance Suite](https://github.com/oliver-zehentleitner/unicorn-binance-suite).
 
+Version: 0.17.x. Python 3.9 – 3.14.
+
 Install: `pip install unicorn-fy`
 Import: `from unicorn_fy import UnicornFy`
 
@@ -48,3 +50,15 @@ ubwa.create_stream(channels="trade", markets="btcusdt",
 - All methods are static — you do NOT need to create a UnicornFy instance
 - Input must be valid JSON string, not a Python dict
 - Use `UnicornFy.is_json(data)` to check before parsing
+
+## Related Modules
+
+- [UBWA](https://github.com/oliver-zehentleitner/unicorn-binance-websocket-api) — the primary consumer of UnicornFy; set `output_default="UnicornFy"` to skip manual normalization calls.
+
+## Docs
+
+- Repo: https://github.com/oliver-zehentleitner/unicorn-fy
+- Docs: https://oliver-zehentleitner.github.io/unicorn-fy
+- PyPI: https://pypi.org/project/unicorn-fy/
+- conda-forge: https://anaconda.org/conda-forge/unicorn-fy
+- Changelog: https://github.com/oliver-zehentleitner/unicorn-fy/blob/master/CHANGELOG.md
