@@ -11,11 +11,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 0.17.1.dev (development stage/unreleased/unstable)
 ### Changed
-- `environment.yml`: switched from a pip-only dependency list to native
-  conda dependencies on the `conda-forge` channel. Mixing conda and pip
-  in the same environment file bypasses the conda solver for the pip
-  deps and can cause ABI/ resolver conflicts; conda-forge best practice
-  is to install everything from `conda-forge` when using conda.
+- README: reworded the PyPy paragraph. The old sentence ("For the PyPy
+  interpreter we offer packages only from Python version 3.9 and
+  higher") made sense when we still shipped wheels for pre-3.9 CPython;
+  now that 3.9 is the minimum for everything, it's just noise.
+  Replaced with "PyPy wheels are available for all supported Python
+  versions."
 - README: switched all conda references from the legacy `lucit` channel
   to `conda-forge`. Added conda-forge version / downloads / feedstock
   build badges. Removed the "There is no conda support until migration"
