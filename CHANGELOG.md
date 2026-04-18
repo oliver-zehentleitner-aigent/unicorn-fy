@@ -11,6 +11,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 0.17.1.dev (development stage/unreleased/unstable)
 ### Changed
+- README: replaced the lucit.tech "UNICORN Binance WebSocket API"
+  project link with the canonical GitHub repo URL.
+- `examples/README.md`: removed the lucit.tech chat support link.
+- `.github/ISSUE_TEMPLATE/{bug_report,feature_request}.yml`: updated
+  the Issue-Guidelines and version-check-script URLs from the old
+  `LUCIT-Systems-and-Development` GitHub org to `oliver-zehentleitner`.
+- `SECURITY.md`: replaced the lucit.tech contact form URL with the
+  GitHub Security Advisories private-reporting URL.
+### Changed
 - README: reworded the PyPy paragraph. The old sentence ("For the PyPy
   interpreter we offer packages only from Python version 3.9 and
   higher") made sense when we still shipped wheels for pre-3.9 CPython;
