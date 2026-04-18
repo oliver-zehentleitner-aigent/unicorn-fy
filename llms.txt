@@ -3,7 +3,7 @@
 > Normalize raw Binance WebSocket/REST data into well-formed Python dicts.
 > Part of [UNICORN Binance Suite](https://github.com/oliver-zehentleitner/unicorn-binance-suite).
 
-Version: 0.17.x. Python 3.9 – 3.14.
+Version: 0.17.2. Python 3.9 – 3.14.
 
 Install: `pip install unicorn-fy`
 Import: `from unicorn_fy import UnicornFy`
