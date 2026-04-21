@@ -202,6 +202,9 @@ or the [current master branch](https://github.com/oliver-zehentleitner/unicorn-f
 ## Examples
 - [Look here!](https://github.com/oliver-zehentleitner/unicorn-fy/tree/master/examples/)
 
+## Related Articles
+- [UBS article series overview](https://blog.technopathy.club/series/unicorn-binance-suite)
+
 ## Project Homepage
 [https://github.com/oliver-zehentleitner/unicorn-fy](https://github.com/oliver-zehentleitner/unicorn-fy)
 
