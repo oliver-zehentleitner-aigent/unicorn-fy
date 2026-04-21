@@ -58,6 +58,7 @@ ubwa.create_stream(channels="trade", markets="btcusdt",
 ## Docs
 
 - Repo: https://github.com/oliver-zehentleitner/unicorn-fy
+- AGENTS.md (for AI agents working on this repo): https://github.com/oliver-zehentleitner/unicorn-fy/blob/master/AGENTS.md
 - Docs: https://oliver-zehentleitner.github.io/unicorn-fy
 - PyPI: https://pypi.org/project/unicorn-fy/
 - conda-forge: https://anaconda.org/conda-forge/unicorn-fy
